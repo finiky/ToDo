@@ -2,6 +2,7 @@ BEGIN TRANSACTION;
 
 CREATE TABLE users {
     id SERIAL PRIMARY KEY,
+    username text,
     email text,
     passkey text
 };
