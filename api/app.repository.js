@@ -1,6 +1,7 @@
 const get_db = require("./db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const config = require("./config");
 module.exports = {
   signup: async (request, response) => {
     const db = await get_db();
