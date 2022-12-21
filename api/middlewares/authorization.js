@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-
-const checkJWT = (requset, response) => {
-    const {email, password} = request.body;
-     
+const get_db = require("../db");
+const checkJWT = async (requset, response) => {
+    
 };
