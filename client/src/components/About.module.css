@@ -1,0 +1,10 @@
+.allParas {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+.about {
+  margin: 0 auto;
+  font-size: 1.2rem;
+  text-align: justify;
+}

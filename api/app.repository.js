@@ -6,6 +6,7 @@ module.exports = {
   signup: async (request, response) => {
     const db = await get_db();
     const { email, username, passkey } = request.body;
+    console.log(email, username, passkey);
     const user = await db.query(`SELECT * FROM users WHERE email = $1`, [
       email,
     ]);
@@ -24,16 +25,14 @@ module.exports = {
     }
   },
   login: async (request, response) => {
-    const { email, passkey } = request.body;
+    const { email, passkey } = request.params;
     const db = await get_db();
     if (!email || !passkey) {
       return response
         .status(400)
-        .json({ message: "Please enter an email and password to login" });
+        .json({ message: "Please enter an email id and password to login" });
     }
-    const user = await db.query(`SELECT * FROM users WHERE email = $1`, [
-      email,
-    ]);
+    const user = await db.query(`SELECT * FROM users WHERE email = '${email}'`);
     if (!user.rows[0]) {
       return response
         .status(400)
@@ -46,7 +45,7 @@ module.exports = {
     if (!validatePassword) {
       return response
         .status(400)
-        .json({ message: "Invalid email id or password." });
+        .json({ message: "Incorrect email id or password." });
     }
     if (validatePassword) {
       const token = jwt.sign({ id: user.rows[0].id }, config.secret);

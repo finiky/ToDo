@@ -59,7 +59,7 @@ const Signup = () => {
             required
           />
         </div>
-        <button>Signup</button>
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
