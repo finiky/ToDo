@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import styles from "./Login.module.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [passkey, setPasskey] = useState("");
@@ -32,12 +33,15 @@ const Login = () => {
   if (!error) {
     return (
       <div>
-        <h1>Login to Continue</h1>
-        <form onSubmit={handleSubmit} method="POST">
+        <h1 className={styles.heading}>Login to Continue</h1>
+        <form className={styles.form} onSubmit={handleSubmit} method="POST">
           <div>
-            <label htmlFor="email">Email</label>
+            <div className={styles.labels}>
+              <label htmlFor="email">Email</label>
+            </div>
             <input
               id="email"
+              className={styles.input}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -45,9 +49,12 @@ const Login = () => {
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <div className={styles.labels}>
+              <label htmlFor="password">Password</label>
+            </div>
             <input
               id="password"
+              className={styles.input}
               type="password"
               value={passkey}
               onChange={(e) => setPasskey(e.target.value)}
