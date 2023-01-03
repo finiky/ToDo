@@ -12,7 +12,7 @@ const Login = () => {
     const response = await fetch(
       `http://localhost:5000/login/${email}/${passkey}`
     );
-    const data = await response.json();
+    
     if (response.status === 200) {
       const { id, token } = await response.json();
       localStorage.setItem("x-auth-token", JSON.stringify(token));
@@ -20,6 +20,7 @@ const Login = () => {
       navigate("/");
     }
     if (response.status !== 200) {
+      const data = await response.json();
       setMessage(data.message);
       setError(true);
     }

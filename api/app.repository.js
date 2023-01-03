@@ -6,7 +6,6 @@ module.exports = {
   signup: async (request, response) => {
     const db = await get_db();
     const { email, username, passkey } = request.body;
-    console.log(email, username, passkey);
     const user = await db.query(`SELECT * FROM users WHERE email = $1`, [
       email,
     ]);
