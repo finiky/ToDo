@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const get_db = require("../db");
-const checkJWT = async (requset, response) => {
+const checkJWT = async (request, response) => {
   const { token } = request.headers;
   if (!token) {
     return response.status(400).json({ message: "Login to continue" });

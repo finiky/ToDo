@@ -1,5 +1,5 @@
-import styles from "./Home.module.css";
-const Home = () => {
+import styles from "./Todos.module.css";
+const Todos = () => {
   return (
     <div>
       <h1 className={styles.h1}>Scheduler</h1>
@@ -7,4 +7,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Todos;
