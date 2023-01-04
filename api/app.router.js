@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.post("/signup", repo.signup);
 router.get("/login/:email/:passkey", repo.login);
-router.post("/:id", checkJWT, repo.createTodo);
+router.post("/:id", checkJWT, repo.createTask);
 module.exports = router;

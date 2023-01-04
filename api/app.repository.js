@@ -51,7 +51,7 @@ module.exports = {
       return response.status(200).json({ token, ...user.rows[0] });
     }
   },
-  createTodo: async (request, response) => {
+  createTask: async (request, response) => {
     const { id } = request.params;
     const { task } = request.body;
     const db = await get_db();
