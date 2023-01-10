@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Todos.module.css";
+import styles from "./CreateTask.module.css";
 
-const Todos = () => {
+const CreateTask = () => {
   const [task, setTask] = useState("");
   const token = localStorage.getItem("x-auth-token");
   const id = localStorage.getItem("id");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetch(`http://localhost:5000/${id}`, {
@@ -29,8 +29,8 @@ const Todos = () => {
     <div>
       <h1 className={styles.h1}>Scheduler</h1>
       <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <label htmlFor="task">Enter Task</label>
+        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+          <label htmlFor="task">Type your Task</label>
           <input
             id="task"
             type="text"
@@ -43,4 +43,4 @@ const Todos = () => {
     </div>
   );
 };
-export default Todos;
+export default CreateTask;

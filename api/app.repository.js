@@ -55,9 +55,10 @@ module.exports = {
     const { id } = request.params;
     const { task } = request.body;
     const db = await get_db();
-    await db.query(
-      `INSERT INTO todos (todos_user_id, task) VALUES ($1, $2)`, [id, task]
-    );
+    await db.query(`INSERT INTO todos (todos_user_id, task) VALUES ($1, $2)`, [
+      id,
+      task,
+    ]);
     const todo = await db.query(`SELECT * FROM todos WHERE task = $1`, [task]);
     if (todo.rows.length) {
       return response.status(201).json({ task: todo.rows[0].task });
@@ -65,14 +66,16 @@ module.exports = {
       return response.status(400).json({ message: "Error creating a todo" });
     }
   },
-  // getTodos: async (request, response) => {
-  //   const { id } = request.body;
-  //   const db = await get_db();
-  //   const todos = await db.query(
-  //     `SELECT * FROM users LEFT JOIN todos ON users.id = todos.todos_user_id
-  //     WHERE users.id = $1`,
-  //     [id]
-  //   );
-  //   return response.status(200).send(todos.rows);
-  // },
+  getTasks: async (request, response) => {
+    const { id } = request.params;
+    console.log(id);
+    const db = await get_db();
+    const todos = await db.query(
+      `SELECT * FROM users 
+      LEFT JOIN todos ON users.id = todos.todos_user_id
+      WHERE users.id = $1`,
+      [id]
+    );
+    return response.status(200).send(todos.rows);
+  },
 };

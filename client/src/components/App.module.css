@@ -4,7 +4,7 @@
 .header {
   margin: 3rem auto;
   display: grid;
-  grid-template-columns: min-content min-content min-content min-content;
+  grid-template-columns: min-content min-content min-content min-content min-content ;
   column-gap: 2rem;
   align-content: center;
   justify-content: center;
